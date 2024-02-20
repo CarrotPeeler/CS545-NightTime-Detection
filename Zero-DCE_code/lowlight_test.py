@@ -12,14 +12,18 @@ import model
 import numpy as np
 from torchvision import transforms
 from PIL import Image
+import cv2
 import glob
 import time
+import math
  
 def lowlight(image_path, savepath, ckpt_path):
 	os.environ['CUDA_VISIBLE_DEVICES']='0'
 	data_lowlight = Image.open(image_path)
 
 	data_lowlight = (np.asarray(data_lowlight)/255.0)
+	# data_lowlight = cv2.resize(data_lowlight, (640,460), interpolation = cv2.INTER_AREA)
+	# data_lowlight = cv2.GaussianBlur(data_lowlight, (0,0), sigmaX=1)
 
 	data_lowlight = torch.from_numpy(data_lowlight).float()
 	data_lowlight = data_lowlight.permute(2,0,1)
