@@ -8,4 +8,7 @@ Steps:
 4. Try to make the output image as close as possible to the ground-truth image. We use MSE as the metric to measure the error/difference.
 
 Running SwinIR:
-```python main_test_swinir.py --task color_dn --noise 50 --model_path model_zoo/swinir/005_colorDN_DFWB_s128w8_SwinIR-M_noise50.pth --folder_gt testsets/nighttime```
+```
+python main_test_swinir.py --task color_dn --noise 25 --model_path 
+model_zoo/swinir/005_colorDN_DFWB_s128w8_SwinIR-M_noise50.pth --folder_gt testsets/nighttime
+```
