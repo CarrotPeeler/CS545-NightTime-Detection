@@ -60,17 +60,17 @@ enh_night_img = cv2.imread(enh_night_img_path)
 # kernel = np.ones((3,3), np.float32)/9
 # enh_night_img_d = cv2.filter2D(enh_night_img, -1, kernel)
 # enh_night_img_d = cv2.cvtColor(enh_night_img_d, cv2.COLOR_BGR2GRAY)
-enh_night_img_d1 = cv2.GaussianBlur(enh_night_img, (0,0), 1)
+# enh_night_img_d1 = cv2.GaussianBlur(enh_night_img, (0,0), 1)
 # enh_night_img_d = anisotropicDiffusion(enh_night_img, 0.075, 80, 100)
-enh_night_img_d = cv2.fastNlMeansDenoisingColored(enh_night_img,
-                                                dst=None,
-                                                h=5,
-                                                hColor=5,
-                                                templateWindowSize=7,
-                                                searchWindowSize=21)
+# enh_night_img_d = cv2.fastNlMeansDenoisingColored(enh_night_img,
+#                                                 dst=None,
+#                                                 h=5,
+#                                                 hColor=5,
+#                                                 templateWindowSize=7,
+#                                                 searchWindowSize=21)
 
 # unsharp_night_img_1 = cv2.addWeighted(enh_night_img, 1.5, enh_night_img_d, -0.5, 0)
-unsharp_night_img_2 = cv2.addWeighted(enh_night_img, 2.0, enh_night_img_d1, -1.0, 0)
+# unsharp_night_img_2 = cv2.addWeighted(enh_night_img, 2.0, enh_night_img_d1, -1.0, 0)
 # unsharp_night_img_2 = cv2.cvtColor(unsharp_night_img_2, cv2.COLOR_BGR2GRAY)
 # unsharp_night_img_2 = cv2.equalizeHist(unsharp_night_img_2)
 
@@ -80,12 +80,12 @@ unsharp_night_img_2 = cv2.addWeighted(enh_night_img, 2.0, enh_night_img_d1, -1.0
 #                                thresholdType=cv2.THRESH_BINARY,
 #                                blockSize=11,
 #                                C=3)
-sharp_img_path = "./images/sharpened_night.jpg"
-sharp_night_img = cv2.imread(sharp_img_path)
-resized = cv2.resize(sharp_night_img, (640,460), interpolation = cv2.INTER_AREA)
-t_lower_night = 0  # Lower Threshold 
-t_upper_night = 60  # Upper threshold 
-n_edge_map = cv2.Canny(resized, t_lower_night, t_upper_night) 
+sharp_night_img_path = "./SwinIR/results/swinir_color_dn_noise25/nighttime_enhanced_SwinIR.png"
+sharp_night_img = cv2.imread(sharp_night_img_path)
+# resized = cv2.resize(sharp_night_img, (640,460), interpolation = cv2.INTER_AREA)
+t_lower_night = 15 # Lower Threshold 
+t_upper_night = 25 # Upper threshold 
+n_edge_map = cv2.Canny(sharp_night_img, t_lower_night, t_upper_night) 
 
 cv2.imshow('Daytime Edge Map', day_edge_map) 
 # cv2.imshow('night', night_img) 
