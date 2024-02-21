@@ -57,7 +57,7 @@ print(f"MSE for enhanced nighttime edge map: {mse_final}")
   
 # the window showing output image with corners 
 cv2.imshow('Daytime Harris Corner Map', day_corners) 
-# cv2.imshow('Non-enhanced Nighttime Harris Corner Map', night_corners) 
+cv2.imshow('Non-enhanced Nighttime Harris Corner Map', night_corners) 
 cv2.imshow('Enhanced Nighttime Harris Corner Map', enh_night_corners) 
 
 cv2.imshow('Enh Nighttime Image', enh_night_img) 
